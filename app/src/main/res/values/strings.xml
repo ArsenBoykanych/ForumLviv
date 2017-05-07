@@ -1,8 +1,23 @@
 <resources>
+
+    <!--Base string-->
     <string name="app_name">ForumLviv</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!--Actions-->
     <string name="action_settings">Settings</string>
+
+    <!--Errors-->
+    <string name="error_no_internet_message">It look like your internet connection is off. Please turn it on and try again</string>
+    <string name="error_internet_connection">No Internet connection</string>
+    <string name="error_server_unavailable">Some problem with server</string>
+    <string name="error_unknown">An unknown error occurred</string>
+    <string name="error_sign_in_cancelled">Sign in cancelled</string>
+
+    <!--Facebook -->
+    <string name="facebook_application_id" translatable="false">1423840884373056</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1423840884373056</string>
+
 </resources>

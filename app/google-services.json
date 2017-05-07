@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "534926629449",
+    "firebase_url": "https://forumlviv-b5c2b.firebaseio.com",
+    "project_id": "forumlviv-b5c2b",
+    "storage_bucket": "forumlviv-b5c2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534926629449:android:9a61129dd4b303a6",
+        "android_client_info": {
+          "package_name": "aboikanych.forumlviv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534926629449-20affvfkhbge5ovf57diq70piklqupqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "aboikanych.forumlviv",
+            "certificate_hash": "0ba8ca3194543b47ffbd6788dfbf557a57d22934"
+          }
+        },
+        {
+          "client_id": "534926629449-9fm348k9123sajj8pn1cfppvfjeuvjab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD19C1BnMd09sUyGQxXwTj3TCe25ju6Iho"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534926629449-9fm348k9123sajj8pn1cfppvfjeuvjab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
