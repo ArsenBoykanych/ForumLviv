@@ -55,21 +55,21 @@ public class AuthActivity extends BaseActivity {
                 // Sign in failed
                 if (response == null) {
                     // User pressed back button
-                    showSnackbar(getCurrentFocus(), R.string.error_sign_in_cancelled);
+                    showToast(R.string.error_sign_in_cancelled);
                     return;
                 }
 
                 if (response.getErrorCode() == ErrorCodes.NO_NETWORK) {
-                    showSnackbar(getCurrentFocus(), R.string.error_no_internet_message);
+                    showToast(R.string.error_no_internet_message);
                     return;
                 }
 
                 if (response.getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
-                    showSnackbar(getCurrentFocus(), R.string.error_unknown);
+                    showToast(R.string.error_unknown);
                     return;
                 }
             }
-            showSnackbar(getCurrentFocus(), R.string.error_server_unavailable);
+            showToast(R.string.error_server_unavailable);
         }
     }
 }
