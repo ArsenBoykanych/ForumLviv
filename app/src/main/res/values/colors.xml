@@ -7,4 +7,10 @@
     <color name="white">#ffff</color>
 
     <color name="grey">#564c4c</color>
+
+    //forum icon colors
+    <color name="forum_yellow">#fddd1d</color>
+    <color name="forum_blue">#275cab</color>
+    <color name="forum_red">#ed2f58</color>
+    <color name="forum_green">#00bc45</color>
 </resources>

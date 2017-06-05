@@ -1,13 +1,21 @@
-package aboikanych.forumlviv.ui;
+package aboikanych.forumlviv.ui.main;
 
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import aboikanych.forumlviv.R;
 import aboikanych.forumlviv.base.BaseActivity;
+import aboikanych.forumlviv.ui.home.HomeFragment;
+import aboikanych.forumlviv.ui.map.MapFragment;
+import aboikanych.forumlviv.ui.shops_services.ShopServiceFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,8 +29,18 @@ public class ForumActivity extends BaseActivity {
 
     private final static String FRAGMENT_TAG = "TOP_FRAGMENT";
 
+    private int[] forumLogoColors;
+    private int logoColorPosition = 0;
+    private Handler handler;
+
+
     @BindView(R.id.menuTabLayout)
     TabLayout topTabs;
+    @BindView(R.id.forumLogoCircle)
+    ImageView forumLogoCircle;
+    @BindView(R.id.fragmentContainer)
+    View fragmentContainer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +50,23 @@ public class ForumActivity extends BaseActivity {
         }
         setContentView(R.layout.activity_forum);
         ButterKnife.bind(this);
-
+        setupLogoAnimation();
         setupTabs();
+    }
+
+    private void setupLogoAnimation() {
+        forumLogoColors = getResources().getIntArray(R.array.forum_logo_colors);
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                forumLogoCircle.setColorFilter(new PorterDuffColorFilter(forumLogoColors[logoColorPosition++], PorterDuff.Mode.SRC_IN));
+                if (logoColorPosition == 4) {
+                    logoColorPosition = 0;
+                }
+                handler.postDelayed(this, 3000);
+            }
+        }, 3000);
     }
 
     private void setupTabs() {
@@ -57,16 +90,16 @@ public class ForumActivity extends BaseActivity {
     }
 
     private void handleTabClick(int position) {
-        // Fragment fragment;
+        Fragment fragment = null;
         switch (position) {
             case TAB_HOME:
-
+                fragment = new HomeFragment();
                 break;
             case TAB_MAP:
-
+                fragment = new MapFragment();
                 break;
             case TAB_SHOPS:
-
+                fragment = new ShopServiceFragment();
                 break;
             case TAB_SUITS:
 
@@ -77,15 +110,17 @@ public class ForumActivity extends BaseActivity {
             default:
                 throw new IllegalArgumentException("Tab id is not found");
         }
-        // loadFragment(fragment);
+        if (fragment != null) {
+            loadFragment(fragment);
+        }
     }
 
     private void createTabs() {
         topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_home), true);
-        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_home));
-        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_home));
-        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_home));
-        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_home));
+        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_map));
+        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_shops));
+        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_basket));
+        topTabs.addTab(topTabs.newTab().setIcon(R.drawable.ic_more));
     }
 
     private void loadFragment(Fragment fragment) {

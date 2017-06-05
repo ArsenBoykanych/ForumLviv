@@ -3,6 +3,7 @@ package aboikanych.forumlviv.base;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -36,12 +37,17 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
 
     }
 
+    @Override
+    public void baseError(String errorDescription) {
+        Log.e("ForumLviv", errorDescription);
+    }
+
     public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     public void showToast(@StringRes int resId) {
-        Toast.makeText(this, resId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), resId, Toast.LENGTH_SHORT).show();
     }
 
     public void showSnackbar(View view, @StringRes int resId) {

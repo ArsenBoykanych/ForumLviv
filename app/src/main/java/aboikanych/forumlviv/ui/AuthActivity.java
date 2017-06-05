@@ -14,6 +14,7 @@ import java.util.Arrays;
 
 import aboikanych.forumlviv.R;
 import aboikanych.forumlviv.base.BaseActivity;
+import aboikanych.forumlviv.ui.main.ForumActivity;
 
 public class AuthActivity extends BaseActivity {
     private static final int RC_SIGN_IN = 123;

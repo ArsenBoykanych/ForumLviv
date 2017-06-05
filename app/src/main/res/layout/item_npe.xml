@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/default_small_margin_8"
+    android:layout_marginBottom="@dimen/default_small_margin_8"
+    app:elevation="@dimen/default_elevation_4"
+    tools:ignore="contentDescription">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/default_large_margin_32"
+        android:paddingEnd="@dimen/default_large_margin_32"
+        android:paddingTop="@dimen/default_margin_16"
+        android:paddingBottom="@dimen/default_margin_16">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_logo"
+            android:layout_marginBottom="@dimen/default_small_margin_8"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Now to 10 November" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

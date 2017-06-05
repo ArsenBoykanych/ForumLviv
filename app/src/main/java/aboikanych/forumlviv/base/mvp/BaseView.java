@@ -21,4 +21,6 @@ public interface BaseView {
      * This is base method used to notify user about some http request error
      * */
     void httpError(Exception e);
+
+    void baseError(String errorDescription);
 }

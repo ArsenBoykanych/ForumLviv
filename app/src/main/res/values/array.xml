@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="forum_logo_colors">
+        <item>@color/forum_yellow</item>
+        <item>@color/forum_blue</item>
+        <item>@color/forum_red</item>
+        <item>@color/forum_green</item>
+    </array>
+</resources>
