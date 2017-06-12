@@ -3,11 +3,13 @@ package aboikanych.forumlviv.net.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
+
 /**
  * Created by Boykanych on 05.06.2017.
  */
 
-public class ShopService implements Parcelable {
+public class ShopService implements Parcelable, SearchSuggestion {
 
     public String description;
     public String hoursFrom;
@@ -16,8 +18,18 @@ public class ShopService implements Parcelable {
     public String title;
     public String webLink;
     public String phone;
+    public String category;
 
     public ShopService() {
+    }
+
+    public ShopService(String title) {
+        this.title = title;
+    }
+
+    public ShopService(String title, String imgUrl) {
+        this.title = title;
+        this.imgUrl = imgUrl;
     }
 
     public String getDescription() {
@@ -48,6 +60,19 @@ public class ShopService implements Parcelable {
         return phone;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    @Override
+    public String getBody() {
+        return title;
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
 
     @Override
     public int describeContents() {
@@ -63,6 +88,7 @@ public class ShopService implements Parcelable {
         dest.writeString(this.title);
         dest.writeString(this.webLink);
         dest.writeString(this.phone);
+        dest.writeString(this.category);
     }
 
     protected ShopService(Parcel in) {
@@ -73,6 +99,7 @@ public class ShopService implements Parcelable {
         this.title = in.readString();
         this.webLink = in.readString();
         this.phone = in.readString();
+        this.category = in.readString();
     }
 
     public static final Creator<ShopService> CREATOR = new Creator<ShopService>() {

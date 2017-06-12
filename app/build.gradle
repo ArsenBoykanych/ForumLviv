@@ -44,6 +44,8 @@ dependencies {
     compile 'com.indoorway.android:location:1.3.0'
 
     compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.github.arimorty:floatingsearchview:2.1.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 

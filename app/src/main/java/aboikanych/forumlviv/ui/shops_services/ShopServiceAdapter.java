@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -27,6 +26,7 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
 
     private Context context;
     private List<ShopService> itemsList;
+    private List<ShopService> favItemsList;
 
     public ShopServiceAdapter(Context context, List<ShopService> itemsList) {
         this.context = context;
@@ -49,6 +49,8 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
                 .into(holder.image);
     }
 
+
+
     @Override
     public int getItemCount() {
         return itemsList.size();
@@ -69,11 +71,9 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, itemsList.get(getAdapterPosition()).getTitle(), Toast.LENGTH_SHORT).show();
             Intent startAppIntent = new Intent(context, ShopDetailActivity.class);
             startAppIntent.putExtra(ShopDetailActivity.EXTRA_SHOP, itemsList.get(getAdapterPosition()));
             context.startActivity(startAppIntent);
-
         }
     }
 }

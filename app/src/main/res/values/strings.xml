@@ -19,5 +19,7 @@
     <!--Facebook -->
     <string name="facebook_application_id" translatable="false">1423840884373056</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb1423840884373056</string>
+    <string name="action_search">Пошук</string>
+    <string name="about"><![CDATA[Forum Lviv розташований в центрі міста, на вулиці Під Дубом, недалеко від головної площі міста і знаменитого Оперного театру. На верхньому рівні триповерхового торгового центру розміщуються кінотеатр, зона розваг і ресторани з видом на місто. Загальна орендована площа Forum Lviv складає 35 000 кв.м. Підземний паркінг Forum Lviv вміщує 600 паркомісць.  \n\n В Forum Lviv доступні більше ніж 120 відомих українських та міжнародних брендів,, зокрема, супермаркет Сільпо, супермаркет електроніки Comfy, дитячий розважальний центр Ігроленд , кінотеатр Планета Кіно, Zara, Bershka, Massimo Dutti, Oysho, Pull & Bear, Stradivarius, Mango, LC Waikiki , Reserved, Cropp, House, Sinsay, Будинок Іграшок, CCC, Інтертоп, Timberland, Lacoste, Pandora, Сушия і багато інших. \n\n  Управління Forum Lviv здійснює Multi Ukraine.]]></string>
 
 </resources>

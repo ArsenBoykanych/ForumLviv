@@ -49,4 +49,6 @@ public class BaseFragment extends Fragment implements BaseView {
     public void showToast(int resId) {
         ((BaseActivity) getActivity()).showToast(resId);
     }
+
+
 }

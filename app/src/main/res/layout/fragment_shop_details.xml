@@ -56,6 +56,7 @@
         android:id="@+id/mapFab"
         style="@style/FabStyle"
         android:src="@drawable/ic_map"
+        app:backgroundTint="@color/white"
         app:layout_anchor="@id/appBarLayout"
         app:layout_anchorGravity="bottom|right|end" />
 

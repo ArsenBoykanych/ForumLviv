@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,9 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/grey">
@@ -32,18 +34,49 @@
             android:layout_marginStart="152dp"
             android:src="@drawable/ic_round"
             tools:ignore="ContentDescription" />
-
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/menuTabLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/relativeLayout"
         android:background="@color/grey"
         app:tabIndicatorHeight="0dp" />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menuTabLayout" />
+
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:inputType="textNoSuggestions"
+        android:visibility="gone"
+        app:floatingSearch_close_search_on_keyboard_dismiss="false"
+        app:floatingSearch_dimBackground="false"
+        app:floatingSearch_dismissOnOutsideTouch="true"
+        app:floatingSearch_leftActionMode="showHome"
+        app:floatingSearch_searchBarMarginLeft="@dimen/default_extra_small_margin_4"
+        app:floatingSearch_searchBarMarginRight="@dimen/default_extra_small_margin_4"
+        app:floatingSearch_searchBarMarginTop="@dimen/default_extra_small_margin_4"
+        app:floatingSearch_searchHint="Знайти..."
+        app:floatingSearch_suggestionsListAnimDuration="250" />
+
+    <ImageView
+        android:id="@+id/searchButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_above="@+id/menuTabLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_search"
+        android:visibility="gone" />
+
+</RelativeLayout>

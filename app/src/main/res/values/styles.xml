@@ -38,4 +38,52 @@
         <item name="rippleColor">@color/grey</item>
     </style>
 
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="ItemSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="ShopDetailActionTextView" parent="android:Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/default_margin_16</item>
+        <item name="android:drawablePadding">@dimen/default_large_margin_32</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="CategoryRoundTextView" parent="android:Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/default_extra_small_margin_4</item>
+        <item name="android:layout_marginTop">@dimen/default_extra_small_margin_4</item>
+        <item name="android:background">@drawable/bg_shop_category_text</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ShopCategoryTextView" parent="CategoryRoundTextView">
+        <item name="android:layout_marginBottom">@dimen/default_margin_16</item>
+        <item name="android:layout_marginTop">@dimen/default_margin_16</item>
+    </style>
+
+    <style name="ShopDetailHoursTextView" parent="android:Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/default_small_margin_8</item>
+        <item name="android:layout_marginBottom">@dimen/default_small_margin_8</item>
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
 </resources>
