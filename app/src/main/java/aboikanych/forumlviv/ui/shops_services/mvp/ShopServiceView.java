@@ -12,4 +12,6 @@ import aboikanych.forumlviv.net.model.ShopService;
 public interface ShopServiceView extends BaseView {
 
     void onShopsServicesLoaded(List<ShopService> shopsServices);
+
+    void onFavShopsServicesLoaded(List<String> shopsServices);
 }

@@ -10,4 +10,6 @@ public interface ShopServicePresenter extends BasePresenter<ShopServiceView> {
 
     void getShopsServices();
 
+    void getFavShopsServices();
+
 }

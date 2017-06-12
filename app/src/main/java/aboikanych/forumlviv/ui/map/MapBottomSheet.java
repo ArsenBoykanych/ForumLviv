@@ -27,7 +27,7 @@ public class MapBottomSheet extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container);
-        ShopDetailFragment fragment = ShopDetailFragment.newInstance((ShopService) getArguments().getParcelable(ARG_SHOP), true);
+        ShopDetailFragment fragment = ShopDetailFragment.newInstance((ShopService) getArguments().getParcelable(ARG_SHOP),null, true);
         getChildFragmentManager().beginTransaction().add(R.id.content, fragment).commit();
         return view;
     }

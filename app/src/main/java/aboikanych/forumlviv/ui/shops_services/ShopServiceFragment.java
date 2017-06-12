@@ -2,6 +2,7 @@ package aboikanych.forumlviv.ui.shops_services;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,7 +21,6 @@ import aboikanych.forumlviv.ui.calbacks.ForumActivityCallbacks;
 import aboikanych.forumlviv.ui.shops_services.mvp.ShopServicePresenter;
 import aboikanych.forumlviv.ui.shops_services.mvp.ShopServicePresenterImpl;
 import aboikanych.forumlviv.ui.shops_services.mvp.ShopServiceView;
-import aboikanych.forumlviv.utils.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,6 +44,7 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
     TabLayout topTabs;
 
     private List<ShopService> shopsServices;
+    private List<String> favs;
 
     @Override
     public void onAttach(Context context) {
@@ -57,6 +58,7 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
         presenter = new ShopServicePresenterImpl();
         presenter.attachView(this);
         presenter.getShopsServices();
+        presenter.getFavShopsServices();
     }
 
     @Nullable
@@ -72,6 +74,8 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
     public void onResume() {
         super.onResume();
         callbacks.setSearchVisibility(true);
+        presenter.getFavShopsServices();
+
     }
 
     @Override
@@ -88,6 +92,18 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
         shopRecycler.setHasFixedSize(true);
         shopRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         shopRecycler.setAdapter(adapter);
+        adapter.setFavItemsList(favs);
+
+    }
+
+    @Override
+    public void onFavShopsServicesLoaded(List<String> shopsServices) {
+        favs = shopsServices;
+        if (favs != null) {
+            adapter.setFavItemsList(favs);
+            shopRecycler.invalidate();
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void setupTabs() {
@@ -118,24 +134,28 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
                 shopRecycler.invalidate();
                 break;
             case TAB_FAVOURITES:
-                List<String> favs = Utils.readFav(getActivity());
-                List<ShopService> favShopsServices = new ArrayList<>();
-                if (favs != null) {
-                    for (String item : favs) {
-                        for (ShopService itemShop : shopsServices) {
-                            if (item.contains(itemShop.getTitle())) {
-                                favShopsServices.add(itemShop);
-                            }
-                        }
-                    }
-                }
-                adapter = new ShopServiceAdapter(getActivity(), favShopsServices);
+                adapter = new ShopServiceAdapter(getActivity(), updateFav());
                 shopRecycler.setAdapter(adapter);
                 shopRecycler.invalidate();
                 break;
             default:
                 throw new IllegalArgumentException("Tab id is not found");
         }
+    }
+
+    @NonNull
+    private List<ShopService> updateFav() {
+        List<ShopService> favShopsServices = new ArrayList<>();
+        if (favs != null) {
+            for (String item : favs) {
+                for (ShopService itemShop : shopsServices) {
+                    if (item.contains(itemShop.getTitle())) {
+                        favShopsServices.add(itemShop);
+                    }
+                }
+            }
+        }
+        return favShopsServices;
     }
 
     private void createTabs() {

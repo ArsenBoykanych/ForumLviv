@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import aboikanych.forumlviv.R;
@@ -26,7 +27,7 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
 
     private Context context;
     private List<ShopService> itemsList;
-    private List<ShopService> favItemsList;
+    private List<String> favItemsList;
 
     public ShopServiceAdapter(Context context, List<ShopService> itemsList) {
         this.context = context;
@@ -49,7 +50,9 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
                 .into(holder.image);
     }
 
-
+    public void setFavItemsList(List<String> favItemsList) {
+        this.favItemsList = favItemsList;
+    }
 
     @Override
     public int getItemCount() {
@@ -73,6 +76,7 @@ public class ShopServiceAdapter extends RecyclerView.Adapter<ShopServiceAdapter.
         public void onClick(View v) {
             Intent startAppIntent = new Intent(context, ShopDetailActivity.class);
             startAppIntent.putExtra(ShopDetailActivity.EXTRA_SHOP, itemsList.get(getAdapterPosition()));
+            startAppIntent.putStringArrayListExtra(ShopDetailActivity.EXTRA_SHOP_FAV, (ArrayList<String>) favItemsList);
             context.startActivity(startAppIntent);
         }
     }

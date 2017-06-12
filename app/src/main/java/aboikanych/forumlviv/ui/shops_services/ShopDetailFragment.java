@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import aboikanych.forumlviv.R;
 import aboikanych.forumlviv.base.BaseActivity;
 import aboikanych.forumlviv.base.BaseFragment;
@@ -33,6 +36,7 @@ import butterknife.Optional;
 public class ShopDetailFragment extends BaseFragment {
 
     public final static String ARG_SHOP = "shop_model";
+    public final static String ARG_FAV = "shop_fav";
     private final static String ARG_TYPE_DIALOG = "dialog";
 
     @BindView(R.id.description)
@@ -60,9 +64,10 @@ public class ShopDetailFragment extends BaseFragment {
     private ShopService shopService;
     private boolean isDialog;
 
-    public static ShopDetailFragment newInstance(ShopService shopService, boolean isDialog) {
+    public static ShopDetailFragment newInstance(ShopService shopService, List<String> faws, boolean isDialog) {
         Bundle args = new Bundle();
         args.putParcelable(ARG_SHOP, shopService);
+        args.putStringArrayList(ARG_FAV, (ArrayList)faws);
         args.putBoolean(ARG_TYPE_DIALOG, isDialog);
         ShopDetailFragment fragment = new ShopDetailFragment();
         fragment.setArguments(args);

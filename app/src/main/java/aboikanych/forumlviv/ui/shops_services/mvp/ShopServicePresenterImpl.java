@@ -1,5 +1,6 @@
 package aboikanych.forumlviv.ui.shops_services.mvp;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +28,7 @@ public class ShopServicePresenterImpl implements ShopServicePresenter {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<ShopService> shopServiceList = new ArrayList<>();
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     shopServiceList.add(postSnapshot.getValue(ShopService.class));
                 }
                 view.onShopsServicesLoaded(shopServiceList);
@@ -41,6 +42,32 @@ public class ShopServicePresenterImpl implements ShopServicePresenter {
     }
 
     @Override
+    public void getFavShopsServices() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            databaseReference.child(Constants.DATA_USERS).child(auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    List<String> favShops = new ArrayList<>();
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            favShops.add(postSnapshot.getValue(String.class));
+                        }
+                        view.onFavShopsServicesLoaded(favShops);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    view.baseError(databaseError.getMessage());
+                }
+            });
+        } else {
+            view.onFavShopsServicesLoaded(null);
+        }
+    }
+
+    @Override
     public void onResume() {
 
     }
@@ -49,6 +76,7 @@ public class ShopServicePresenterImpl implements ShopServicePresenter {
     public void onPause() {
 
     }
+
     @Override
     public void onDestroy() {
         view = null;

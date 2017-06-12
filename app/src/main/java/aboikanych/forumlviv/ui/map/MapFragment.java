@@ -312,6 +312,11 @@ public class MapFragment extends BaseFragment implements ShopServiceView {
         });
     }
 
+    @Override
+    public void onFavShopsServicesLoaded(List<String> shopsServices) {
+
+    }
+
     @OnClick(value = {R.id.firstLevel, R.id.secondLevel, R.id.thirdLevel, R.id.wayFAB, R.id.wayClose, R.id.wayGo})
     public void onLevelsClick(View view) {
         switch (view.getId()) {
