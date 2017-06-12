@@ -91,9 +91,8 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
         adapter = new ShopServiceAdapter(getActivity(), this.shopsServices);
         shopRecycler.setHasFixedSize(true);
         shopRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        shopRecycler.setAdapter(adapter);
         adapter.setFavItemsList(favs);
-
+        shopRecycler.setAdapter(adapter);
     }
 
     @Override
@@ -101,8 +100,8 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
         favs = shopsServices;
         if (favs != null) {
             adapter.setFavItemsList(favs);
-            shopRecycler.invalidate();
             adapter.notifyDataSetChanged();
+            shopRecycler.invalidate();
         }
     }
 
@@ -130,11 +129,13 @@ public class ShopServiceFragment extends BaseFragment implements ShopServiceView
         switch (position) {
             case TAB_ALL:
                 adapter = new ShopServiceAdapter(getActivity(), shopsServices);
+                adapter.setFavItemsList(favs);
                 shopRecycler.setAdapter(adapter);
                 shopRecycler.invalidate();
                 break;
             case TAB_FAVOURITES:
                 adapter = new ShopServiceAdapter(getActivity(), updateFav());
+                adapter.setFavItemsList(favs);
                 shopRecycler.setAdapter(adapter);
                 shopRecycler.invalidate();
                 break;
